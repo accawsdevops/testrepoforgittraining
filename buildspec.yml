@@ -1,19 +1,9 @@
 version: 0.2
 
 phases:
-  install:
-    commands:
-      - echo Installing dependencies...
-      - yum install -y unzip  # Install unzip
-      - curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-      - unzip awscliv2.zip
-      - ./aws/install  # Install AWS CLI
-      - export PATH=$PATH:/usr/local/bin  # Ensure AWS CLI is in the PATH
-
   pre_build:
     commands:
-      - echo Verifying AWS CLI installation...
-      - aws --version  # Verify that AWS CLI is installed
+      - echo Logging in to AWS...
       - aws sts get-caller-identity  # Check AWS credentials
 
   build:
