@@ -1,16 +1,22 @@
 version: 0.2
 
 phases:
+  install:
+    commands:
+      - echo "Nothing to install in this simple build."
+
   pre_build:
     commands:
-      - echo Logging in to AWS...
-      - aws sts get-caller-identity  # Check AWS credentials
+      - echo "Preparing for build."
 
   build:
     commands:
-      - echo Creating S3 bucket...
-      - aws s3api create-bucket --bucket 28june-accawsdevops-codebuild --region us-east-1
+      - echo "Building project... (In this case, no build is needed for static HTML)."
 
   post_build:
     commands:
-      - echo Build completed!
+      - echo "Build completed!"
+
+artifacts:
+  files:
+    - '**/*'  # Specify the file you want to store as an artifact
